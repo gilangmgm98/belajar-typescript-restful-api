@@ -5,69 +5,73 @@
 Endpoint : **POST** `/api/users`
 
 Request Body :
-```json 
+
+```json
 {
-    "username"  : "gilangmgm",
-    "password"  : "rahasia123",
-    "name"      : "Gilang Murdiyanto",
+  "username": "gilangmgm",
+  "password": "rahasia123",
+  "name": "Gilang Murdiyanto"
 }
 ```
 
-Response Body (Success): 
+Response Body (Success):
 
-```json 
+```json
 {
-    "data" : {
-        "username"  : "gilangmgm",
-        "name"      : "Gilang Murdiyanto",
-    }
+  "data": {
+    "username": "gilangmgm",
+    "name": "Gilang Murdiyanto"
+  }
 }
 ```
 
-Response Body (Failed): 
+Response Body (Failed):
 
-```json 
+```json
 {
-    "error" : "username already registered",
+  "error": "username already registered"
 }
 ```
-Response Body (Failed): 
 
-```json 
+Response Body (Failed):
+
+```json
 {
-    "error" : "username must not blank",
+  "error": "username must not blank"
 }
 ```
 
 ## Login User
+
 Endpoint : **POST** `/api/users/login`
 
-Request Body : 
-```json 
+Request Body :
+
+```json
 {
-    "username"  : "gilangmgm",
-    "name"      : "Gilang Murdiyanto",
-    "password"  : "rahasia123",
+  "username": "gilangmgm",
+  "name": "Gilang Murdiyanto",
+  "password": "rahasia123"
 }
 ```
 
-Response Body (Success) : 
+Response Body (Success) :
 
-```json 
+```json
 {
-    "data" : {
-        "username"  : "gilangmgm",
-        "name"      : "Gilang Murdiyanto",
-        "token"     : "UUID",
-    }
+  "data": {
+    "username": "gilangmgm",
+    "name": "Gilang Murdiyanto",
+    "token": "UUID"
+  }
 }
 ```
 
 Response Body (Failed) :
 
-```json 
+```json
 {
-    "error" : "wrong username or password",
+  "error": "wrong username or password"
 }
 ```
 
@@ -77,61 +81,62 @@ Endpoint : **GET** `/api/users/current`
 
 Request Header :
 
- - X-API-TOKEN : `token`
+- X-API-TOKEN : `token`
 
-Response Body (Success): 
+Response Body (Success):
 
-```json 
+```json
 {
-    "data" : {
-        "username"  : "gilangmgm",
-        "name"      : "Gilang Murdiyanto",
-    }
+  "data": {
+    "username": "gilangmgm",
+    "name": "Gilang Murdiyanto"
+  }
 }
 ```
 
-Response Body (Failed): 
+Response Body (Failed):
 
-```json 
+```json
 {
-    "error" : "Unauthorized",
+  "error": "Unauthorized"
 }
 ```
 
 ## Update User
+
 Endpoint : **PATCH** `/api/users/current`
 
 Request Header :
 
 - X-API-TOKEN : `token`
 
-Request Body : 
-```json 
+Request Body :
+
+```json
 {
-    "name"      : "Gilang Murdiyanto", //Tidak Wajib (bisa kirim salah satu)
-    "password"  : "rahasia123", //Tidak Wajib (bisa kirim salah satu)
+  "name": "Gilang Murdiyanto", //Tidak Wajib (bisa kirim salah satu)
+  "password": "rahasia123" //Tidak Wajib (bisa kirim salah satu)
 }
 ```
 
-Response Body (Success): 
+Response Body (Success):
 
-```json 
+```json
 {
-    "data" : {
-        "success"   : true,
-        "message"   : "Update User Successfully",
-    }
+  "data": {
+    "success": true,
+    "message": "Update User Successfully"
+  }
 }
 ```
 
-Response Body (Failed): 
+Response Body (Failed):
 
-```json 
+```json
 {
-    "error" : "Unauthorized",
+  "error": "Unauthorized"
 }
 ```
-
 
 ## Logout User
 
@@ -141,22 +146,21 @@ Request Header :
 
 - X-API-TOKEN : `token`
 
-Response Body (Success): 
+Response Body (Success):
 
-```json 
+```json
 {
-    "data" : {
-        "success"   : true,
-        "message"   : "Delete User Successfully",
-    }
+  "data": {
+    "success": true,
+    "message": "Delete User Successfully"
+  }
 }
 ```
 
-Response Body (Failed): 
+Response Body (Failed):
 
-```json 
+```json
 {
-    "error" : "Unauthorized",
+  "error": "Unauthorized"
 }
 ```
-

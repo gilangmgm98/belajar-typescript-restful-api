@@ -4,70 +4,75 @@
 
 Endpoint : **POST** `/api/contacts`
 
-Request Header : 
+Request Header :
+
 - X-API-Token : `token`
 
 Request Body :
-```json 
+
+```json
 {
-    "firs_name" : "Gilang",
-    "last_name" : "Murdiyanto",
-    "email"     : "gilangmgm@gmail.com",
+  "firs_name": "Gilang",
+  "last_name": "Murdiyanto",
+  "email": "gilangmgm@gmail.com"
 }
 ```
 
-Response Body (Success): 
+Response Body (Success):
 
-```json 
+```json
 {
-    "data" : {
-        "id"          : 1, // id of the contact (autoincrement)
-        "first_name"  : "Gilang",
-        "last_name"   : "Murdiyanto",
-        "email"       : "gilangmgm@gmail.com",
-    }
+  "data": {
+    "id": 1, // id of the contact (autoincrement)
+    "first_name": "Gilang",
+    "last_name": "Murdiyanto",
+    "email": "gilangmgm@gmail.com"
+  }
 }
 ```
 
-Response Body (Failed): 
+Response Body (Failed):
 
-```json 
+```json
 {
-    "error" : "first_name must not be empty",
+  "error": "first_name must not be empty"
 }
 ```
-Response Body (Failed): 
 
-```json 
+Response Body (Failed):
+
+```json
 {
-    "error" : "username must not blank",
+  "error": "username must not blank"
 }
 ```
 
 ## Get Contact
+
 Endpoint : **GET** `/api/contacts/:id`
 
-Request Header : 
+Request Header :
+
 - X-API-Token : `token`
 
-Response Body (Success): 
+Response Body (Success):
 
-```json 
+```json
 {
-    "data" : {
-        "id"          : 1, // id of the contact (autoincrement)
-        "first_name"  : "Gilang",
-        "last_name"   : "Murdiyanto",
-        "email"       : "gilangmgm@gmail.com",
-    }
+  "data": {
+    "id": 1, // id of the contact (autoincrement)
+    "first_name": "Gilang",
+    "last_name": "Murdiyanto",
+    "email": "gilangmgm@gmail.com"
+  }
 }
 ```
 
-Response Body (Failed): 
+Response Body (Failed):
 
-```json 
+```json
 {
-    "error" : "Contact not found",
+  "error": "Contact not found"
 }
 ```
 
@@ -77,43 +82,45 @@ Endpoint : **PUT** `/api/contacts/:id`
 
 Request Header :
 
- - X-API-TOKEN : `token`
+- X-API-TOKEN : `token`
 
 Request Body :
-```json 
+
+```json
 {
-    "firs_name" : "Gilang",
-    "last_name" : "Murdiyanto",
-    "email"     : "gilangmgm@gmail.com",
+  "firs_name": "Gilang",
+  "last_name": "Murdiyanto",
+  "email": "gilangmgm@gmail.com"
 }
 ```
 
-Response Body (Success): 
+Response Body (Success):
 
-```json 
+```json
 {
-    "data" : {
-        "id"            : 1, // id of the contact (autoincrement)
-        "first_name"    : "Gilang",
-        "last_name"     : "Murdiyanto",
-        "email"         : "gilangmgm@gmail.com",
-        "message"       : "Update Contact Successfully",
-    }
+  "data": {
+    "id": 1, // id of the contact (autoincrement)
+    "first_name": "Gilang",
+    "last_name": "Murdiyanto",
+    "email": "gilangmgm@gmail.com",
+    "message": "Update Contact Successfully"
+  }
 }
 ```
 
-Response Body (Failed): 
+Response Body (Failed):
 
-```json 
+```json
 {
-    "error" : "first_name must not be empty",
+  "error": "first_name must not be empty"
 }
 ```
-Response Body (Failed): 
 
-```json 
+Response Body (Failed):
+
+```json
 {
-    "error" : "username must not blank",
+  "error": "username must not blank"
 }
 ```
 
@@ -125,36 +132,36 @@ Request Header :
 
 - X-API-TOKEN : `token`
 
-Response Body (Success): 
+Response Body (Success):
 
-```json 
+```json
 {
-    "data" : {
-        "success"   : true,
-        "message"   : "Remove Contact  Successfully",
-    }
+  "data": {
+    "success": true,
+    "message": "Remove Contact Successfully"
+  }
 }
 ```
 
-Response Body (Failed): 
+Response Body (Failed):
 
-```json 
+```json
 {
-    "error" : "Contact not found",
+  "error": "Contact not found"
 }
 ```
 
-Response Body (Failed): 
+Response Body (Failed):
 
-```json 
+```json
 {
-    "error" : "Unauthorized",
+  "error": "Unauthorized"
 }
 ```
 
 ## Search Contact
 
-Endpoint : **GET** `/api/contacts
+Endpoint : **GET** `/api/contacts`
 
 Query Parameter :
 
@@ -167,9 +174,9 @@ Request Header :
 
 - X-API-TOKEN : `token`
 
-Response Body (Success): 
+Response Body (Success):
 
-```json 
+```json
 {
     "data" : [
         {
@@ -187,11 +194,10 @@ Response Body (Success):
 }
 ```
 
+Response Body (Failed):
 
-Response Body (Failed): 
-
-```json 
+```json
 {
-    "error" : "Unauthorized",
+  "error": "Unauthorized"
 }
 ```
