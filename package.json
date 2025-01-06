@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/gilangmgm98/belajar-typescript-restful-api#readme",
   "dependencies": {
+    "@prisma/client": "^6.1.0",
     "bcrypt": "^5.1.1",
     "express": "^4.21.2",
     "winston": "^3.17.0",
