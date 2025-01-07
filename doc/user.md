@@ -123,10 +123,17 @@ Response Body (Success):
 
 ```json
 {
-  "data": {
-    "success": true,
-    "message": "Update User Successfully"
-  }
+  "success": true,
+  "message": "Update User Successfully"
+}
+```
+
+Response Body (Failed):
+
+```json
+{
+  "success": false,
+  "message": "Update User Unsuccessful"
 }
 ```
 
@@ -150,10 +157,8 @@ Response Body (Success):
 
 ```json
 {
-  "data": {
-    "success": true,
-    "message": "Delete User Successfully"
-  }
+  "success": true,
+  "message": "User Logged Out Successfully"
 }
 ```
 
