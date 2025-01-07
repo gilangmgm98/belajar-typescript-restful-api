@@ -14,7 +14,8 @@ Request Body :
 {
   "firs_name": "Gilang",
   "last_name": "Murdiyanto",
-  "email": "gilangmgm@gmail.com"
+  "email": "gilangmgm@gmail.com",
+  "phone": "021021021"
 }
 ```
 
@@ -22,12 +23,11 @@ Response Body (Success):
 
 ```json
 {
-  "data": {
-    "id": 1, // id of the contact (autoincrement)
-    "first_name": "Gilang",
-    "last_name": "Murdiyanto",
-    "email": "gilangmgm@gmail.com"
-  }
+  "id": 1, // id of the contact (autoincrement)
+  "first_name": "Gilang",
+  "last_name": "Murdiyanto",
+  "email": "gilangmgm@gmail.com",
+  "phone": "021021021"
 }
 ```
 
@@ -36,14 +36,6 @@ Response Body (Failed):
 ```json
 {
   "error": "first_name must not be empty"
-}
-```
-
-Response Body (Failed):
-
-```json
-{
-  "error": "username must not blank"
 }
 ```
 
@@ -59,12 +51,11 @@ Response Body (Success):
 
 ```json
 {
-  "data": {
-    "id": 1, // id of the contact (autoincrement)
-    "first_name": "Gilang",
-    "last_name": "Murdiyanto",
-    "email": "gilangmgm@gmail.com"
-  }
+  "id": 1, // id of the contact (autoincrement)
+  "first_name": "Gilang",
+  "last_name": "Murdiyanto",
+  "email": "gilangmgm@gmail.com",
+  "phone": "021021021"
 }
 ```
 
@@ -90,7 +81,8 @@ Request Body :
 {
   "firs_name": "Gilang",
   "last_name": "Murdiyanto",
-  "email": "gilangmgm@gmail.com"
+  "email": "gilangmgm@gmail.com",
+  "phone": "021021021"
 }
 ```
 
@@ -98,13 +90,12 @@ Response Body (Success):
 
 ```json
 {
-  "data": {
-    "id": 1, // id of the contact (autoincrement)
-    "first_name": "Gilang",
-    "last_name": "Murdiyanto",
-    "email": "gilangmgm@gmail.com",
-    "message": "Update Contact Successfully"
-  }
+  "id": 1, // id of the contact (autoincrement)
+  "first_name": "Gilang",
+  "last_name": "Murdiyanto",
+  "email": "gilangmgm@gmail.com",
+  "phone": "021021021",
+  "message": "Update Contact Successfully"
 }
 ```
 
@@ -113,14 +104,6 @@ Response Body (Failed):
 ```json
 {
   "error": "first_name must not be empty"
-}
-```
-
-Response Body (Failed):
-
-```json
-{
-  "error": "username must not blank"
 }
 ```
 
@@ -136,10 +119,8 @@ Response Body (Success):
 
 ```json
 {
-  "data": {
-    "success": true,
-    "message": "Remove Contact Successfully"
-  }
+  "success": true,
+  "message": "Remove Contact Successfully"
 }
 ```
 
@@ -184,6 +165,7 @@ Response Body (Success):
             "first_name"    : "Gilang",
             "last_name"     : "Murdiyanto",
             "email"         : "gilangmgm@gmail.com"
+            "phone"         : "021021021"
         }
     ],
     "paging" : {
