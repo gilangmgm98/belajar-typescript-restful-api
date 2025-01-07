@@ -148,6 +148,7 @@ Query Parameter :
 
 - name : string, 'contact firstname' or 'contact lastname' (optional)
 - email : string, 'contact email' (optional)
+- phone : number, 'phone number' (optional)
 - page : number, default 1
 - size : number, default 10
 
@@ -164,13 +165,13 @@ Response Body (Success):
             "id"            : 1, // id of the contact (autoincrement)
             "first_name"    : "Gilang",
             "last_name"     : "Murdiyanto",
-            "email"         : "gilangmgm@gmail.com"
+            "email"         : "gilangmgm@gmail.com",
             "phone"         : "021021021"
         }
     ],
     "paging" : {
         "current_page" : 1,
-        "total_page" : 10
+        "total_page" : 10,
         "size" : 10
     }
 }

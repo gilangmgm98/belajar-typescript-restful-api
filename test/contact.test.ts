@@ -86,7 +86,7 @@ describe('GET /api/contacts/:contactId', () => {
         const response = await supertest(web)
             .get(`/api/contacts/${contact.id}`)
             .set('X-API-TOKEN', 'test')
-            
+
         logger.debug(response.body)
         expect(response.status).toBe(200)
         expect(response.body.data.id).toBeDefined()
@@ -100,9 +100,9 @@ describe('GET /api/contacts/:contactId', () => {
     it("should get contact by id", async () => {
         const contact = await ContactTest.get()
         const response = await supertest(web)
-            .get(`/api/contacts/${contact.id+2}`)
+            .get(`/api/contacts/${contact.id + 2}`)
             .set('X-API-TOKEN', 'test')
-            
+
         logger.debug(response)
         expect(response.status).toBe(404)
         expect(response.body.errors).toBeDefined()
@@ -133,14 +133,14 @@ describe('PUT /api/contacts/:contactId', () => {
                 phone: '081234567891'
             })
 
-            logger.debug(response.body)
-            expect(response.status).toBe(200)
-            expect(response.body.data.id).toBe(contact.id)
-            expect(response.body.data.first_name).toBe('Gilang test')
-            expect(response.body.data.last_name).toBe('Murdiyanto test')
-            expect(response.body.data.email).toBe('updated@test.com')
-            expect(response.body.data.phone).toBe('081234567891')
-            
+        logger.debug(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data.id).toBe(contact.id)
+        expect(response.body.data.first_name).toBe('Gilang test')
+        expect(response.body.data.last_name).toBe('Murdiyanto test')
+        expect(response.body.data.email).toBe('updated@test.com')
+        expect(response.body.data.phone).toBe('081234567891')
+
     })
 
     it('should reject to update contact if request invalid', async () => {
@@ -155,10 +155,10 @@ describe('PUT /api/contacts/:contactId', () => {
                 phone: '081'
             })
 
-            logger.debug(response.body)
-            expect(response.body.data).toBeUndefined()
-            expect(response.status).toBe(400)
-            expect(response.body.errors).toBeDefined()
+        logger.debug(response.body)
+        expect(response.body.data).toBeUndefined()
+        expect(response.status).toBe(400)
+        expect(response.body.errors).toBeDefined()
     })
 
     it('should reject to update contact if unauthorized', async () => {
@@ -173,10 +173,10 @@ describe('PUT /api/contacts/:contactId', () => {
                 phone: '081'
             })
 
-            logger.debug(response.body)
-            expect(response.body.data).toBeUndefined()
-            expect(response.status).toBe(401)
-            expect(response.body.errors).toBe('Unauthorized')
+        logger.debug(response.body)
+        expect(response.body.data).toBeUndefined()
+        expect(response.status).toBe(401)
+        expect(response.body.errors).toBe('Unauthorized')
     })
 })
 
@@ -185,7 +185,7 @@ describe('DELETE /api/contacts/:contactId', () => {
         await UserTest.create()
         await ContactTest.create()
     })
-    
+
     afterEach(async () => {
         await ContactTest.deleteAll()
         await UserTest.delete()
@@ -196,13 +196,13 @@ describe('DELETE /api/contacts/:contactId', () => {
         const response = await supertest(web)
             .delete(`/api/contacts/${contact.id}`)
             .set('X-API-TOKEN', 'test')
-            
+
         logger.debug(response.body)
         expect(response.status).toBe(200)
         expect(response.body.success).toBe(true)
         expect(response.body.message).toBe('Remove Contact Successfully')
         expect(response.body.errors).toBeUndefined()
-        
+
     })
 
     it('should be reject to delete contact if invalid token', async () => {
@@ -210,24 +210,142 @@ describe('DELETE /api/contacts/:contactId', () => {
         const response = await supertest(web)
             .delete(`/api/contacts/${contact.id}`)
             .set('X-API-TOKEN', 'invalid token')
-            
+
         logger.debug(response.body)
         expect(response.status).toBe(401)
         expect(response.body.data).toBeUndefined()
         expect(response.body.errors).toBeDefined()
-        expect(response.body.errors).toBe('Unauthorized')   
+        expect(response.body.errors).toBe('Unauthorized')
     })
 
     it('should be reject to delete contact if contactId Invalid', async () => {
         const contact = await ContactTest.get()
         const response = await supertest(web)
-            .delete(`/api/contacts/${contact.id+3}`)
+            .delete(`/api/contacts/${contact.id + 3}`)
             .set('X-API-TOKEN', 'test')
-            
+
         logger.debug(response.body)
         expect(response.status).toBe(404)
         expect(response.body.data).toBeUndefined()
         expect(response.body.errors).toBeDefined()
-        expect(response.body.errors).toBe('Contact not found')   
+        expect(response.body.errors).toBe('Contact not found')
+    })
+})
+
+describe('GET /api/contacts', () => {
+    beforeEach(async () => {
+        await UserTest.create()
+        await ContactTest.create()
+    })
+
+    afterEach(async () => {
+        await ContactTest.deleteAll()
+        await UserTest.delete()
+    })
+
+    it('should be able search contacts', async () => {
+        const response = await supertest(web)
+            .get('/api/contacts')
+            .set('X-API-TOKEN', 'test')
+
+        logger.debug(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data).toBeDefined()
+        expect(response.body.data.length).toBeGreaterThan(0)
+        expect(response.body.data[0]).toHaveProperty('id')
+        expect(response.body.data[0]).toHaveProperty('first_name')
+        expect(response.body.data[0]).toHaveProperty('last_name')
+        expect(response.body.data[0]).toHaveProperty('email')
+        expect(response.body.data[0]).toHaveProperty('phone')
+
+    })
+
+    it('should be able search contacts using name', async () => {
+        const response = await supertest(web)
+            .get('/api/contacts')
+            .query({ name: 'es' })
+            .set('X-API-TOKEN', 'test')
+
+        logger.debug(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data).toBeDefined()
+        expect(response.body.data.length).toBeGreaterThan(0)
+        expect(response.body.data[0]).toHaveProperty('id')
+        expect(response.body.data[0]).toHaveProperty('first_name')
+        expect(response.body.data[0]).toHaveProperty('last_name')
+        expect(response.body.data[0]).toHaveProperty('email')
+        expect(response.body.data[0]).toHaveProperty('phone')
+
+    })
+
+    it('should be able search contacts using email', async () => {
+        const response = await supertest(web)
+            .get('/api/contacts')
+            .query({ email: 'test@test.com' })
+            .set('X-API-TOKEN', 'test')
+
+        logger.debug(response.body)
+        console.info(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data).toBeDefined()
+        expect(response.body.data.length).toBeGreaterThan(0)
+        expect(response.body.data[0]).toHaveProperty('id')
+        expect(response.body.data[0]).toHaveProperty('first_name')
+        expect(response.body.data[0]).toHaveProperty('last_name')
+        expect(response.body.data[0]).toHaveProperty('email')
+        expect(response.body.data[0]).toHaveProperty('phone')
+    })
+
+    it('should be able search contacts using phone', async () => {
+        const response = await supertest(web)
+            .get('/api/contacts')
+            .query({ phone: "890" })
+            .set('X-API-TOKEN', 'test')
+
+        logger.debug(response.body)
+        console.info(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data).toBeDefined()
+        expect(response.body.data.length).toBeGreaterThan(0)
+        expect(response.body.data[0]).toHaveProperty('id')
+        expect(response.body.data[0]).toHaveProperty('first_name')
+        expect(response.body.data[0]).toHaveProperty('last_name')
+        expect(response.body.data[0]).toHaveProperty('email')
+        expect(response.body.data[0]).toHaveProperty('phone')
+    })
+
+    it('should be able search contacts no result', async () => {
+        const response = await supertest(web)
+            .get('/api/contacts')
+            .query({ phone: "021" })
+            .set('X-API-TOKEN', 'test')
+
+        logger.debug(response.body)
+        // console.info(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data).toBeDefined()
+        expect(response.body.data.length).toBe(0)
+        expect(response.body.paging.current_page).toBe(1)
+        expect(response.body.paging.total_pages).toBe(0)
+        expect(response.body.paging.size).toBe(10)
+    })
+
+    it('should be able search contacts with paging', async () => {
+        const response = await supertest(web)
+            .get('/api/contacts')
+            .query({
+                page: 2,
+                size: 1,
+            })
+            .set('X-API-TOKEN', 'test')
+
+        logger.debug(response.body)
+        // console.info(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data).toBeDefined()
+        expect(response.body.data.length).toBe(0)
+        expect(response.body.paging.current_page).toBe(2)
+        expect(response.body.paging.total_pages).toBe(1)
+        expect(response.body.paging.size).toBe(1)
     })
 })
