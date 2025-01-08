@@ -1,7 +1,7 @@
 import { Contact, User } from "@prisma/client";
 import { prismaClient } from "../application/database";
 import { ContactResponse, CreateContactRequest, SearchContactRequest, toContactResponse, UpdateContactRequest } from "../model/contact-model";
-import { ContactValidation } from "../validation/contact.validation";
+import { ContactValidation } from "../validation/contact-validation";
 import { Validation } from "../validation/validation";
 import { logger } from "../application/logging";
 import { ResponseError } from "../error/response-error";

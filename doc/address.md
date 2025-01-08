@@ -24,14 +24,12 @@ Response Body (Success):
 
 ```json
 {
-  "data": {
     "id": 1,
     "street": "Jl. apaya",
     "city": "Kota Angin",
     "province": "Provinsi Daun",
     "country": "Konoha",
     "postal_code": "13853"
-  }
 }
 ```
 
@@ -55,14 +53,12 @@ Response Body (Success):
 
 ```json
 {
-  "data": {
     "id": 1,
     "street": "Jl. apaya",
     "city": "Kota Angin",
     "province": "Provinsi Daun",
     "country": "Konoha",
     "postal_code": "13853"
-  }
 }
 ```
 
@@ -70,7 +66,7 @@ Response Body (Failed):
 
 ```json
 {
-  "error": "Address is not found"
+  "error": "Address not found"
 }
 ```
 
@@ -98,14 +94,12 @@ Response Body (Success):
 
 ```json
 {
-  "data": {
     "id": 1,
     "street": "Jl. apaya",
     "city": "Kota Angin",
     "province": "Provinsi Daun",
     "country": "Konoha",
     "postal_code": "13853"
-  }
 }
 ```
 
@@ -129,10 +123,8 @@ Response Body (Success):
 
 ```json
 {
-  "data": {
     "success": true,
     "message": "Remove Address Successfully"
-  }
 }
 ```
 
@@ -140,7 +132,7 @@ Response Body (Failed):
 
 ```json
 {
-  "error": "Address is not found"
+  "error": "Address not found"
 }
 ```
 
