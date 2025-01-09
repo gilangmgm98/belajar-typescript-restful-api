@@ -9,9 +9,9 @@ Ikuti langkah-langkah berikut untuk memulai proyek ini.
 Tambahkan konfigurasi berikut ke dalam file `.env` Anda:
 
 ```env
-DATABASE_URL="mysql://root:root@localhost:3306/belajar_typescript_restful_api"
+DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE"
 ```
-> **Tip**: Pastikan database sudah diatur sesuai dengan yang digunakan.
+> **Tip**: Pastikan database sudah diatur sesuai dengan yang digunakan, Kebetulan disini saya menggunakan mysql, bila menggunakan yang lain harap baca ke dokumentasi resmi prisma 
 
 ---
 
