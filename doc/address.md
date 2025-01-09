@@ -146,7 +146,7 @@ Response Body (Failed):
 
 ## List Address
 
-Endpoint : **GET** `/api/contacts/:idContact/addresses/:idAddress`
+Endpoint : **GET** `/api/contacts/:idContact/addresses`
 
 Request Header :
 
@@ -181,6 +181,6 @@ Response Body (Failed):
 
 ```json
 {
-  "error": "Contact is not found"
+  "error": "Contact not found"
 }
 ```
